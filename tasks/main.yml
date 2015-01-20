@@ -3,12 +3,22 @@
 - name: Initialize
   deploy_helper: "path={{ project_root }} state=present"
 
+- name: Set file/directory owner, if necessary
+  sudo: True
+  file: path={{ project_root }} recurse=yes owner={{ project_owner }}
+  when: project_owner is defined
+
+- name: Set file/directory group, if necessary
+  sudo: True
+  file: path={{ project_root }} recurse=yes group={{ project_group }}
+  when: project_group is defined
+
 - name: Clone project files without sudo
   sudo: false
   git: "repo={{ project_git_repo }} dest={{ project_source_path }} version={{ project_version }}"
   when: project_deploy_strategy == 'git' and {{ project_git_sudo }} == false
 
-- name: Clone project files *with sudo*
+- name: Clone project files *with sudo*; use with caution!
   sudo: true
   git: "repo={{ project_git_repo }} dest={{ project_source_path }} version={{ project_version }}"
   when: project_deploy_strategy == 'git' and {{ project_git_sudo }} == true

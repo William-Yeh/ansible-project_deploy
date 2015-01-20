@@ -1,0 +1,29 @@
+About this fork
+===
+
+
+## Why this fork?
+
+After sending [pull request](https://github.com/f500/ansible-project_deploy/pull/14) to original [f500.project_deploy](https://github.com/f500/ansible-project_deploy) role, there seems some differences in the way we use this role.  To be more convenient for my own usage, I continue developing on this fork.  Of course, I'll try to merge origianl project's additions along with this fork.
+
+
+## Differences from original role
+
+Additions:
+
+ - added `project_git_sudo` variable to connect to git with or without out sudo (defaults to `false`); see [GitHub Help](https://help.github.com/articles/error-permission-denied-publickey/) about this.
+
+ - added `project_owner` and `project_group` variables to set file/directory owner/group, if any.
+
+
+Original usage remains the same. Read [README](README.md) for details.
+
+
+## License
+
+LGPL v3, same as original project.
+
+
+## Author Information
+
+William Yeh, william.pjyeh@gmail.com

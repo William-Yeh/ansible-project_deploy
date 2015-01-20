@@ -3,12 +3,11 @@ project_deploy
 
 Deploy a project with Ansible
 
-### Changelog for this fork
+#### About this fork
 
-Pull request will be sent to original project maintainer: 
+This is a fork from original [f500.project_deploy](https://github.com/f500/ansible-project_deploy) role.  Read [ABOUT-THIS-FORK](ABOUT-THIS-FORK.md) for details.
 
-- added "project_git_sudo" to connect to git with or without out *sudo* (defaults to false); see [GitHub Help](https://help.github.com/articles/error-permission-denied-publickey/) about this
-
+Below are kept the same as original project's README.
 
 
 ### Changelog 2.1.0
