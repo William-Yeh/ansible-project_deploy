@@ -4,7 +4,7 @@ About this fork
 
 ## Why this fork?
 
-After sending [pull request](https://github.com/f500/ansible-project_deploy/pull/14) to original [f500.project_deploy](https://github.com/f500/ansible-project_deploy) role, there seems some differences in the way we use this role.  To be more convenient for my own usage, I continue developing on this fork.  Of course, I'll try to merge origianl project's additions along with this fork.
+After sending [pull request](https://github.com/f500/ansible-project_deploy/pull/14) to original [f500.project_deploy](https://github.com/f500/ansible-project_deploy) role, there seems some differences in the way we use this role.  To be more convenient for my own usage, I continue developing on this fork.  Of course, I'll try to merge original project's additions along with this fork.
 
 
 ## Differences from original role
