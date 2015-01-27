@@ -8,6 +8,11 @@
   file: path={{ project_root }} recurse=yes owner={{ project_owner }}
   when: project_owner is defined
 
+- name: Set file/directory owner as current "ansible_ssh_user"
+  sudo: True
+  file: path={{ project_root }} recurse=yes owner={{ ansible_ssh_user }}
+  when: project_owner is not defined
+
 - name: Set file/directory group, if necessary
   sudo: True
   file: path={{ project_root }} recurse=yes group={{ project_group }}

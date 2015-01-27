@@ -19,6 +19,34 @@ Additions:
 Original usage remains the same. Read [README](README.md) for details.
 
 
+## Role Variables
+
+### Optional variables
+
+User-configurable defaults:
+
+```yaml
+# use "sudo" mode to connect to git, if absolutely necessary;
+# default = False.
+project_git_sudo: False
+
+
+# set file/directory owner of deployed app, if any;
+# if not set, use {{ ansible_ssh_user }}.
+project_owner
+
+
+# set file/directory group of deployed app, if any;
+project_group
+```
+
+
+
+## Working with *private* git repo
+
+To work with *private* git repo, some details need to be done. See my article “[利用 Ansible 部署 GitHub 專案的設定細節](http://www.codedata.com.tw/social-coding/ansible-github/)” (“HOW-TO: Deploying GitHub Projects with Ansible”) for more information.
+
+
 ## License
 
 LGPL v3, same as original project.
