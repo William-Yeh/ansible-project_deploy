@@ -15,6 +15,8 @@ Additions:
 
  - added `project_owner` and `project_group` variables to set file/directory owner/group, if any.
 
+ - added `project_other_dirs` variable to mkdir, if any.
+
 
 Original usage remains the same. Read [README](README.md) for details.
 
@@ -31,13 +33,17 @@ User-configurable defaults:
 project_git_sudo: False
 
 
-# set file/directory owner of deployed app, if any;
-# if not set, use {{ ansible_ssh_user }}.
+# set file/directory owner of deployed app;
+# default = {{ ansible_ssh_user }}.
 project_owner
 
 
 # set file/directory group of deployed app, if any;
 project_group
+
+
+# array of directories to be `mkdir`, with `project_owner` and `progject_group` set
+project_other_dir
 ```
 
 
