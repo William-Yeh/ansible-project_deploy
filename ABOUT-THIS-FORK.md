@@ -13,6 +13,8 @@ Additions:
 
  - added `project_git_sudo` variable to connect to git with or without out sudo (defaults to `false`); see [GitHub Help](https://help.github.com/articles/error-permission-denied-publickey/) about this.
 
+ - added `project_git_skip` variable to skip the "git clone" step.
+
  - added `project_owner` and `project_group` variables to set file/directory owner/group, if any.
 
  - added `project_other_dirs` variable to mkdir, if any.
@@ -33,6 +35,12 @@ User-configurable defaults:
 project_git_sudo: False
 
 
+# optionally skip the "git clone" step;
+# try to workaround some SSH agent forwarding problems (e.g., on Google Compute Engine).
+# default = False.
+project_git_skip: False
+
+
 # set file/directory owner of deployed app;
 # default = {{ ansible_ssh_user }}.
 project_owner
@@ -51,6 +59,14 @@ project_other_dir
 ## Working with *private* git repo
 
 To work with *private* git repo, some details need to be done. See my article “[利用 Ansible 部署 GitHub 專案的設定細節](http://www.codedata.com.tw/social-coding/ansible-github/)” (“HOW-TO: Deploying GitHub Projects with Ansible”) for more information.
+
+
+If you still encounter strange problems, such as in Google Compute Engine, try the following workaround steps:
+
+1. Set `project_git_skip: true` to skip the role's "git clone" step.
+2. SSH into target hosts with agent forwarding enabled: `ssh -A`. 
+3. Manually "git clone" to `{{ project_source_path }}/shared/source`.
+4. Re-run the ansible-playbook.
 
 
 ## License

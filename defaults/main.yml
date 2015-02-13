@@ -16,6 +16,10 @@ project_version: "master"
 #   see https://help.github.com/articles/error-permission-denied-publickey/
 project_git_sudo: false
 
+# - you can optionally skip the "git clone" step;
+#   try to workaround some SSH agent forwarding problems (e.g., on Google Compute Engine)
+project_git_skip: false
+
 project_owner: "{{ ansible_ssh_user }}"
 project_other_dirs: []
 
