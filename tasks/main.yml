@@ -15,12 +15,14 @@
 - name: Clone project files without sudo
   sudo: false
   git: "repo={{ project_git_repo }} dest={{ project_source_path }} version={{ project_version }}"
-  when: project_deploy_strategy == 'git' and {{ project_git_sudo }} == false and {{ project_git_skip }} == false
+  when: project_deploy_strategy == 'git' and project_git_sudo == false and project_git_skip == false
+  register: project_git_result
 
 - name: Clone project files *with sudo*; use with caution!
   sudo: true
   git: "repo={{ project_git_repo }} dest={{ project_source_path }} version={{ project_version }}"
-  when: project_deploy_strategy == 'git' and {{ project_git_sudo }} == true and {{ project_git_skip }} == false
+  when: project_deploy_strategy == 'git' and project_git_sudo == true and project_git_skip == false
+  register: project_git_result
 
 - name: Rsync project files
   synchronize: "src={{ project_local_path }} dest={{ project_source_path }} rsync_timeout={{ project_deploy_synchronize_timeout }} delete={{ project_deploy_synchronize_delete }} recursive=yes "
@@ -88,6 +90,7 @@
   command: "{{ project_command_for_npm_install }} chdir={{ deploy_helper.new_release_path }}"
   environment: project_environment
   when: project_has_npm
+  register: project_npm_result
 
 - name: Check if bower dir exists
   stat: path={{ deploy_helper.current_path }}/{{ project_bower_components_path }}

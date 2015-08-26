@@ -19,6 +19,9 @@ Additions:
 
  - added `project_other_dirs` variable to mkdir, if any.
 
+ - added `project_git_result` and `project_npm_result` registered variables to propagate the `changed` state to the caller.
+
+
 
 Original usage remains the same. Read [README](README.md) for details.
 
@@ -64,7 +67,7 @@ To work with *private* git repo, some details need to be done. See my article â€
 If you still encounter strange problems, such as in Google Compute Engine, try the following workaround steps:
 
 1. Set `project_git_skip: true` to skip the role's "git clone" step.
-2. SSH into target hosts with agent forwarding enabled: `ssh -A`. 
+2. SSH into target hosts with agent forwarding enabled: `ssh -A`.
 3. Manually "git clone" to `{{ project_source_path }}/shared/source`.
 4. Re-run the ansible-playbook.
 
